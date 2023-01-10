@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel = "icon" href = "https://pngimage.net/wp-content/uploads/2018/05/birthday-cake-emoji-png-7.png">
+        <meta charset = "UTF-8">
+        <title>Puzzle 2018</title>
+        <style>
+            #play
+            {
+                border: 1px solid rgb(0, 0, 0);
+                position: fixed;
+                left: 80px;
+                top: 90px;
+            }
+
+            #origin
+            {
+                border: 1px solid rgb(0, 0, 0);
+                position: fixed;
+                right: 80px;
+                top: 90px;
+            }
+
+            body
+            {
+                background-image: url("https://sfwallpaper.com/images/beautiful-images-of-love-5.jpg");
+                background-repeat: repeat;
+                background-size: cover;
+            }
+
+            #move
+            {
+                position: fixed;
+                left: 270px;
+                top: 50px;
+            }
+
+            #goc
+            {
+                position: fixed;
+                right: 100px;
+                top: 30px;
+            }
+
+            #wish
+            {
+                position: fixed;
+                left: 50px;
+                bottom: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id = "move" width = "560" height = "40"></canvas>
+        <canvas id = "goc" width = "560" height = "80"></canvas>
+        <canvas id = "wish" width = "120" height = "80"></canvas>
+        <canvas id = "play" width = "560" height = "560">
+            <img class = "puzzle" id = "1" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/1.png?raw=true" />
+            <img class = "puzzle" id = "2" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/2.png?raw=true" />
+            <img class = "puzzle" id = "3" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/3.png?raw=true" />
+            <img class = "puzzle" id = "4" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/4.png?raw=true" />
+            <img class = "puzzle" id = "5" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/5.png?raw=true" />
+            <img class = "puzzle" id = "6" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/6.png?raw=true" />
+            <img class = "puzzle" id = "7" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/7.png?raw=true" />
+            <img class = "puzzle" id = "8" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/8.png?raw=true" />
+            <img class = "puzzle" id = "9" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/9.png?raw=true" />
+            <img class = "puzzle" id = "10" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/10.png?raw=true" />
+            <img class = "puzzle" id = "11" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/11.png?raw=true" />
+            <img class = "puzzle" id = "12" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/12.png?raw=true" />
+            <img class = "puzzle" id = "13" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/13.png?raw=true" />
+            <img class = "puzzle" id = "14" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/14.png?raw=true" />
+            <img class = "puzzle" id = "15" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/15.png?raw=true" />
+            <img class = "puzzle" id = "16" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/16.png?raw=true" />
+            <img class = "puzzle" id = "17" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/17.png?raw=true" />
+            <img class = "puzzle" id = "18" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/18.png?raw=true" />
+            <img class = "puzzle" id = "19" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/19.png?raw=true" />
+            <img class = "puzzle" id = "20" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/20.png?raw=true" />
+            <img class = "puzzle" id = "21" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/21.png?raw=true" />
+            <img class = "puzzle" id = "22" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/22.png?raw=true" />
+            <img class = "puzzle" id = "23" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/23.png?raw=true" />
+            <img class = "puzzle" id = "24" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/24.png?raw=true" />
+            <img class = "puzzle" id = "25" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/25.png?raw=true" />
+            <img class = "puzzle" id = "26" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/26.png?raw=true" />
+            <img class = "puzzle" id = "27" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/27.png?raw=true" />
+            <img class = "puzzle" id = "28" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/28.png?raw=true" />
+            <img class = "puzzle" id = "29" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/29.png?raw=true" />
+            <img class = "puzzle" id = "30" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/30.png?raw=true" />
+            <img class = "puzzle" id = "31" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/31.png?raw=true" />
+            <img class = "puzzle" id = "32" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/32.png?raw=true" />
+            <img class = "puzzle" id = "33" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/33.png?raw=true" />
+            <img class = "puzzle" id = "34" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/34.png?raw=true" />
+            <img class = "puzzle" id = "35" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/35.png?raw=true" />
+            <img class = "puzzle" id = "36" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/36.png?raw=true" />
+            <img class = "puzzle" id = "37" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/37.png?raw=true" />
+            <img class = "puzzle" id = "38" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/38.png?raw=true" />
+            <img class = "puzzle" id = "39" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/39.png?raw=true" />
+            <img class = "puzzle" id = "40" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/40.png?raw=true" />
+            <img class = "puzzle" id = "41" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/41.png?raw=true" />
+            <img class = "puzzle" id = "42" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/42.png?raw=true" />
+            <img class = "puzzle" id = "43" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/43.png?raw=true" />
+            <img class = "puzzle" id = "44" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/44.png?raw=true" />
+            <img class = "puzzle" id = "45" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/45.png?raw=true" />
+            <img class = "puzzle" id = "46" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/46.png?raw=true" />
+            <img class = "puzzle" id = "47" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/47.png?raw=true" />
+            <img class = "puzzle" id = "48" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/48.png?raw=true" />
+            <img class = "puzzle" id = "49" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/49.png?raw=true" />
+            <img class = "puzzle" id = "50" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/50.png?raw=true" />
+            <img class = "puzzle" id = "51" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/51.png?raw=true" />
+            <img class = "puzzle" id = "52" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/52.png?raw=true" />
+            <img class = "puzzle" id = "53" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/53.png?raw=true" />
+            <img class = "puzzle" id = "54" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/54.png?raw=true" />
+            <img class = "puzzle" id = "55" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/55.png?raw=true" />
+            <img class = "puzzle" id = "56" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/56.png?raw=true" />
+            <img class = "puzzle" id = "57" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/57.png?raw=true" />
+            <img class = "puzzle" id = "58" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/58.png?raw=true" />
+            <img class = "puzzle" id = "59" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/59.png?raw=true" />
+            <img class = "puzzle" id = "60" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/60.png?raw=true" />
+            <img class = "puzzle" id = "61" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/61.png?raw=true" />
+            <img class = "puzzle" id = "62" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/62.png?raw=true" />
+            <img class = "puzzle" id = "63" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/63.png?raw=true" />
+            <img class = "puzzle" id = "64" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/64.png?raw=true" />
+            <img class = "puzzle" id = "65" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/65.png?raw=true" />
+            <img class = "puzzle" id = "66" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/66.png?raw=true" />
+            <img class = "puzzle" id = "67" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/67.png?raw=true" />
+            <img class = "puzzle" id = "68" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/68.png?raw=true" />
+            <img class = "puzzle" id = "69" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/69.png?raw=true" />
+            <img class = "puzzle" id = "70" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/70.png?raw=true" />
+            <img class = "puzzle" id = "71" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/71.png?raw=true" />
+            <img class = "puzzle" id = "72" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/72.png?raw=true" />
+            <img class = "puzzle" id = "73" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/73.png?raw=true" />
+            <img class = "puzzle" id = "74" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/74.png?raw=true" />
+            <img class = "puzzle" id = "75" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/75.png?raw=true" />
+            <img class = "puzzle" id = "76" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/76.png?raw=true" />
+            <img class = "puzzle" id = "77" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/77.png?raw=true" />
+            <img class = "puzzle" id = "78" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/78.png?raw=true" />
+            <img class = "puzzle" id = "79" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/79.png?raw=true" />
+            <img class = "puzzle" id = "80" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/80.png?raw=true" />
+            <img class = "puzzle" id = "81" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/81.png?raw=true" />
+            <img class = "puzzle" id = "82" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/82.png?raw=true" />
+            <img class = "puzzle" id = "83" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/83.png?raw=true" />
+            <img class = "puzzle" id = "84" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/84.png?raw=true" />
+            <img class = "puzzle" id = "85" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/85.png?raw=true" />
+            <img class = "puzzle" id = "86" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/86.png?raw=true" />
+            <img class = "puzzle" id = "87" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/87.png?raw=true" />
+            <img class = "puzzle" id = "88" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/88.png?raw=true" />
+            <img class = "puzzle" id = "89" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/89.png?raw=true" />
+            <img class = "puzzle" id = "90" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/90.png?raw=true" />
+            <img class = "puzzle" id = "91" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/91.png?raw=true" />
+            <img class = "puzzle" id = "92" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/92.png?raw=true" />
+            <img class = "puzzle" id = "93" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/93.png?raw=true" />
+            <img class = "puzzle" id = "94" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/94.png?raw=true" />
+            <img class = "puzzle" id = "95" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/95.png?raw=true" />
+            <img class = "puzzle" id = "96" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/96.png?raw=true" />
+            <img class = "puzzle" id = "97" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/97.png?raw=true" />
+            <img class = "puzzle" id = "98" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/98.png?raw=true" />
+            <img class = "puzzle" id = "99" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/99.png?raw=true" />
+            <img class = "puzzle" id = "100" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/100.png?raw=true" />       
+        </canvas>
+        <canvas id = "origin" width = "560" height = "560">
+            <img id = "origin_image" src = "https://github.com/khuongkhaukhinh21/CBich2018/blob/master/2018.10x10.96px.png?raw=true" width = "560px" height = "560px"/> 
+        </canvas>
+
+
+
+        <script>
+            //Declare canvas
+            var canvas = document.getElementById("play");
+            var canvas_origin = document.getElementById("origin");
+            var canvas_move = document.getElementById("move");
+            var canvas_goc = document.getElementById("goc");
+            var origin = document.getElementById("origin_image");
+            var puzzle_image = 
+            [
+                document.getElementById("1"), document.getElementById("2"), document.getElementById("3"), document.getElementById("4"), document.getElementById("5"), document.getElementById("6"), document.getElementById("7"), document.getElementById("8"), document.getElementById("9"), document.getElementById("10"),
+                document.getElementById("11"), document.getElementById("12"), document.getElementById("13"), document.getElementById("14"), document.getElementById("15"), document.getElementById("16"), document.getElementById("17"), document.getElementById("18"), document.getElementById("19"), document.getElementById("20"),
+                document.getElementById("21"), document.getElementById("22"), document.getElementById("23"), document.getElementById("24"), document.getElementById("25"), document.getElementById("26"), document.getElementById("27"), document.getElementById("28"), document.getElementById("29"), document.getElementById("30"),
+                document.getElementById("31"), document.getElementById("32"), document.getElementById("33"), document.getElementById("34"), document.getElementById("35"), document.getElementById("36"), document.getElementById("37"), document.getElementById("38"), document.getElementById("39"), document.getElementById("40"),
+                document.getElementById("41"), document.getElementById("42"), document.getElementById("43"), document.getElementById("44"), document.getElementById("45"), document.getElementById("46"), document.getElementById("47"), document.getElementById("48"), document.getElementById("49"), document.getElementById("50"),
+                document.getElementById("51"), document.getElementById("52"), document.getElementById("53"), document.getElementById("54"), document.getElementById("55"), document.getElementById("56"), document.getElementById("57"), document.getElementById("58"), document.getElementById("59"), document.getElementById("60"),
+                document.getElementById("61"), document.getElementById("62"), document.getElementById("63"), document.getElementById("64"), document.getElementById("65"), document.getElementById("66"), document.getElementById("67"), document.getElementById("68"), document.getElementById("69"), document.getElementById("70"),
+                document.getElementById("71"), document.getElementById("72"), document.getElementById("73"), document.getElementById("74"), document.getElementById("75"), document.getElementById("76"), document.getElementById("77"), document.getElementById("78"), document.getElementById("79"), document.getElementById("80"),
+                document.getElementById("81"), document.getElementById("82"), document.getElementById("83"), document.getElementById("84"), document.getElementById("85"), document.getElementById("86"), document.getElementById("87"), document.getElementById("88"), document.getElementById("89"), document.getElementById("90"),
+                document.getElementById("91"), document.getElementById("92"), document.getElementById("93"), document.getElementById("94"), document.getElementById("95"), document.getElementById("96"), document.getElementById("97"), document.getElementById("98"), document.getElementById("99"),document.getElementById("100")
+            ]; //Changeable
+            var ctx = canvas.getContext("2d");
+            var ctx_move = canvas_move.getContext("2d"); 
+            var canvas_wish = document.getElementById("wish");
+            var ctx_wish = canvas_wish.getContext("2d");
+            
+
+            //Origin image of game
+            window.onload = function()
+            {
+                var ctx_origin = canvas_origin.getContext("2d");
+                ctx_origin.drawImage(origin, 0, 0, 560, 560);
+                var ctx_goc = canvas_goc.getContext("2d");
+                ctx_goc.beginPath();
+                ctx_goc.font = "50px serif";
+	            ctx_goc.fillStyle = "black";
+                ctx_goc.fillText("Origin Picture", 170, 50, 560);
+                ctx_goc.closePath();
+                //Wish
+                var wish = "Tiếc là em không có ở đây sớm hơn để dự wedding của chị. Em chúc anh chị luôn hạnh phúc nha <3 <3 <3."
+                ctx_wish.beginPath();
+                ctx_wish.font = "italic 40px Comic Sans";
+                ctx_wish.strokeStyle = "black";
+                ctx_wish.fillStyle = "#191970";
+                ctx_wish.textAlign = "start";
+                ctx_wish.fillText(wish, 0, 40, window.screen.availWidth - 100);
+                ctx_wish.strokeText(wish, 0, 40, window.screen.availWidth - 100);
+                ctx_wish.closePath();
+            }
+            document.getElementById("wish").width = window.screen.availWidth - 100;
+            document.getElementById("wish").style.bottom = ((window.screen.availHeight - 90 - 560 - 80) / 2 - 55).toString() + "px";
+
+
+
+            //Origin Location of Puzzle
+            var length = 56; //Changeable
+            var row = 10; //Changeable
+            var column = 10; //Changeable
+            var total = row * column;
+            puzzle_x = [];
+            puzzle_y = [];
+
+            for (var i = 0 ; i < column ; i++) puzzle_x.push(i * length);
+
+            for (var j = 0 ; j < row ; j++) puzzle_y.push(j * length);
+
+
+
+            //Class puzzle
+            class puzzle 
+            {
+                constructor(puzzle_location, puzzle_image)
+                {
+                    this.x = puzzle_location[0];
+                    this.y = puzzle_location[1];
+                    this.width = length;
+                    this.height = length;
+                    this.puzzle_image = puzzle_image; 
+                }
+                draw_puzzle()
+                {
+                    ctx.beginPath();
+                    ctx.drawImage(this.puzzle_image, this.x, this.y, this.width, this.height);
+                    ctx.closePath();
+                }
+
+                get_location()
+                {
+                    return [this.x, this.y];
+                }
+                get_image()
+                {
+                    return this.puzzle_image;
+                }
+            }
+
+
+
+            //Puzzle Have to Finish
+            var puzzle_location_right = [];
+            for (var i = 0 ; i < row ; i++)
+                for (var j = 0 ; j < column ; j++) 
+                    puzzle_location_right.push([puzzle_x[j], puzzle_y[i]]);
+                    
+            var puzzle_right = [];
+            for (var i = 0 ; i < total ; i++) puzzle_right.push(new puzzle(puzzle_location_right[i], puzzle_image[i]));
+
+
+
+            //All variable
+            var move = 0;
+            var box_null = 0; //Changeable
+            
+            var box = [] //Use for playing click mouse 
+            for (var i = 1 ; i <= row ; i++) box.push([]);
+            for (var i = 0 ; i < total ; i++) box[Math.floor(i/column)].push(i);
+
+            var right = [];
+            var yours = [];
+
+            var canvas_left = canvas.offsetLeft;
+            var canvas_top = canvas.offsetTop;
+
+            for (var i = 0 ; i < total ; i++) right.push(puzzle_right[i].puzzle_image);
+
+
+
+            //Puzzle Random
+            function turn_down(index_puzzle_image_random)
+            {
+                if (index_puzzle_image_random.indexOf(box_null) - column >= 0)
+                {
+                    index_null = index_puzzle_image_random.indexOf(box_null)
+                    index_puzzle_image_random[index_puzzle_image_random.indexOf(box_null)] = index_puzzle_image_random[index_null - column];
+                    index_puzzle_image_random[index_null - column] = box_null;
+                }
+            }
+
+            function turn_up(index_puzzle_image_random)
+            {
+                if (index_puzzle_image_random.indexOf(box_null) + column <= total - 1)
+                {
+                    index_null = index_puzzle_image_random.indexOf(box_null)
+                    index_puzzle_image_random[index_puzzle_image_random.indexOf(box_null)] = index_puzzle_image_random[index_null + column];
+                    index_puzzle_image_random[index_null + column] = box_null;
+                }
+            }
+
+            function turn_left(index_puzzle_image_random)
+            {
+                if ((index_puzzle_image_random.indexOf(box_null) + 1) % column != 0)
+                {
+                    index_null = index_puzzle_image_random.indexOf(box_null)
+                    index_puzzle_image_random[index_puzzle_image_random.indexOf(box_null)] = index_puzzle_image_random[index_puzzle_image_random.indexOf(box_null) + 1];
+                    index_puzzle_image_random[index_null + 1] = box_null;
+                }
+            }
+
+            function turn_right(index_puzzle_image_random)
+            {
+                if (index_puzzle_image_random.indexOf(box_null) % column != 0)
+                {
+                    index_null = index_puzzle_image_random.indexOf(box_null)
+                    index_puzzle_image_random[index_puzzle_image_random.indexOf(box_null)] = index_puzzle_image_random[index_puzzle_image_random.indexOf(box_null) - 1];
+                    index_puzzle_image_random[index_null - 1] = box_null;
+                }
+            }
+
+            var puzzle_image_random = []
+            //changeable
+            var index_puzzle_image_random = []
+
+            for (var i = 0 ; i < total ; i++) index_puzzle_image_random.push(i);
+
+            function random_image(times, index_puzzle_image_random)
+            {
+                for (var i = 1 ; i <= times ; i++)
+                {
+                    turn = Math.floor(Math.random() * 4);
+                    if (turn == 1)
+                    {
+                        turn_down(index_puzzle_image_random);
+                    }
+                    else if (turn == 2)
+                    {
+                        turn_up(index_puzzle_image_random);
+                    }
+                    else if (turn == 3)
+                    {
+                        turn_left(index_puzzle_image_random);
+                    }
+                    else
+                    {
+                        turn_right(index_puzzle_image_random);
+                    }
+                }
+            }
+
+            random_image(10000, index_puzzle_image_random)
+
+            while (index_puzzle_image_random.indexOf(box_null) - column >= 0) turn_down(index_puzzle_image_random);
+
+            while (index_puzzle_image_random.indexOf(box_null) % column != 0) turn_right(index_puzzle_image_random);
+
+            for (var i = 0 ; i < total ; i++) puzzle_image_random.push(puzzle_image[index_puzzle_image_random[i]]);
+
+            var puzzle_random = [];
+
+            for (var i = 0 ; i < total ; i++) puzzle_random.push(new puzzle(puzzle_location_right[i], puzzle_image_random[i])); 
+
+
+
+            //All function
+            //Function 1 random a number in [x, y]
+            function ngaunhien(x, y)
+            {
+                return Math.floor(Math.random() * (y - x + 1)) + x;
+            }
+
+
+
+            //Function 2 draw puzzle in the left
+            function draw_puzzle()
+            {
+            ctx.beginPath();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (var i = 0 ; i < total ; i++)
+            {
+                puzzle_random[i].draw_puzzle();
+                ctx.strokeRect(puzzle_random[i].x, puzzle_random[i].y, puzzle_random[i].width, puzzle_random[i].height);
+            }
+            ctx.closePath();
+            }
+
+
+
+            //Function 3 check if player win
+            function check_win()
+            {
+                for (var i = 0 ; i < total ; i++)
+                {
+                    if (puzzle_random[i].puzzle_image != right[i])
+                    {
+                        return 0;
+                    }
+                }
+                isGameOver = true;
+                setTimeout(function(){animation_win(); }, 400);
+            }
+
+
+
+            //Function 4 draw the move
+            function draw_move()
+            {
+                ctx_move.beginPath();
+                ctx_move.clearRect(0, 0, canvas_move.width, canvas_move.height);
+                var width_move;
+                if (move < 10)
+                {
+                    width_move = 120;
+                    start_move = 30;
+                }
+                else if (move < 100)
+                {
+                    width_move = 140;
+                    start_move = 20;
+                }
+                else if (move < 1000) 
+                {
+                    width_move = 160;
+                    start_move = 10;
+                }
+                else 
+                {
+                    width_move = 180;
+                    start_move = 0;
+                }
+                ctx_move.font = "40px serif";
+	            ctx_move.fillStyle = "black";
+                ctx_move.fillText("Move: " + move, start_move, 30, width_move);
+                ctx_move.closePath();
+            }
+
+
+
+            //Function 5 animation if winning
+            function animation_win()
+            {
+                alert("Congratulation!!!\nThe keyword for this puzzle is 'c'"); //Changeable
+            }
+
+            //Function 6 wishes
+            function wish()
+            {
+                return 0;
+            }
+
+            //Function input
+            function key_input()
+            {
+                document.addEventListener("keyup", function(event)
+                {
+                    if (event.keyCode == 40) //down
+                    {
+                        if (box_null - column >= 0)
+                        {
+                            move++;
+                            image_white = puzzle_random[box_null].get_image();
+                            box_null -= column;
+                            image_p = puzzle_random[box_null].get_image();
+                            puzzle_random[box_null].puzzle_image = image_white;
+                            puzzle_random[box_null + column].puzzle_image = image_p;
+                        }
+                    }
+                    else if (event.keyCode == 38) //up
+                    {
+                        if (box_null + column <= total - 1)
+                        {
+                            move++;
+                            image_white = puzzle_random[box_null].get_image();
+                            box_null += column;
+                            image_p = puzzle_random[box_null].get_image();
+                            puzzle_random[box_null].puzzle_image = image_white;
+                            puzzle_random[box_null - column].puzzle_image = image_p;
+                        }
+                    }
+                    else if (event.keyCode == 37) //left
+                    {
+                        if ((box_null + 1) % column != 0)
+                        {
+                            move++;
+                            image_white = puzzle_random[box_null].get_image();
+                            box_null += 1;
+                            image_p = puzzle_random[box_null].get_image();
+                            puzzle_random[box_null].puzzle_image = image_white;
+                            puzzle_random[box_null - 1].puzzle_image = image_p;
+                        }
+                    }
+                    else if (event.keyCode == 39) //right
+                    {  
+                        if (box_null % column != 0)
+                        {
+                            move++;
+                            image_white = puzzle_random[box_null].get_image();
+                            box_null -= 1;
+                            image_p = puzzle_random[box_null].get_image();
+                            puzzle_random[box_null].puzzle_image = image_white;
+                            puzzle_random[box_null + 1].puzzle_image = image_p;
+                        }
+                    }
+                })
+            }
+
+
+
+            function mouse_input()
+            {
+                canvas.addEventListener("click", function(event) 
+                {
+                    var m_x = event.pageX - canvas_left;
+                    var m_y = event.pageY - canvas_top;
+                    var box_target = box[Math.floor(m_y / length)][Math.floor(m_x / length)];
+                    if (box_target - box_null == column && box_null + column <= total - 1)
+                    {
+                        move++;
+                        image_white = puzzle_random[box_null].get_image();
+                        box_null += column;
+                        image_p = puzzle_random[box_null].get_image();
+                        puzzle_random[box_null].puzzle_image = image_white;
+                        puzzle_random[box_null - column].puzzle_image = image_p;
+                    }
+                    else if (box_null - box_target == column && box_null - column >= 0)
+                    {
+                        move++;
+                        image_white = puzzle_random[box_null].get_image();
+                        box_null -= column;
+                        image_p = puzzle_random[box_null].get_image();
+                        puzzle_random[box_null].puzzle_image = image_white;
+                        puzzle_random[box_null + column].puzzle_image = image_p;
+                    }
+                    else if (box_target - box_null == 1 && (box_null + 1) % column != 0)
+                    {
+                        move++;
+                        image_white = puzzle_random[box_null].get_image();
+                        box_null += 1;
+                        image_p = puzzle_random[box_null].get_image();
+                        puzzle_random[box_null].puzzle_image = image_white;
+                        puzzle_random[box_null - 1].puzzle_image = image_p;
+                    }
+                    else if (box_null - box_target == 1 && box_null % column != 0)
+                    {
+                        move++;
+                        image_white = puzzle_random[box_null].get_image();
+                        box_null -= 1;
+                        image_p = puzzle_random[box_null].get_image();
+                        puzzle_random[box_null].puzzle_image = image_white;
+                        puzzle_random[box_null + 1].puzzle_image = image_p;                    
+                    }
+                })
+
+            }
+
+
+
+            //Game Loop
+            var isGameOver = false;
+
+            function draw()
+            {
+                if (!isGameOver)
+                {
+                    check_win();
+                    draw_move();
+                    draw_puzzle();
+                    window.requestAnimationFrame(draw);
+                }
+            }
+
+            key_input();
+            
+            mouse_input();
+            
+            draw();            	
+        </script>
+    </body>
+</html>

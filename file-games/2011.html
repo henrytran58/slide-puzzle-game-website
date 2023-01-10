@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel = "icon" href = "https://pngimage.net/wp-content/uploads/2018/05/birthday-cake-emoji-png-7.png">
+        <meta charset = "UTF-8">
+        <title>Puzzle 2011</title>
+        <style>
+            #play
+            {
+                border: 1px solid rgb(0, 0, 0);
+                position: fixed;
+                left: 80px;
+                top: 140px;
+            }
+
+            #origin
+            {
+                border: 1px solid rgb(0, 0, 0);
+                position: fixed;
+                right: 80px;
+                top: 140px;
+            }
+
+            body
+            {
+                background-image: url("https://img.thuthuattinhoc.vn/uploads/2019/01/24/cute-background-hd_115830959.jpg");
+                background-repeat: repeat;
+            }
+
+            #move
+            {
+                position: fixed;
+                left: 273px;
+                top: 100px;
+            }
+
+            #goc
+            {
+                position: fixed;
+                right: 100px;
+                top: 80px;
+            }
+
+            #wish
+            {
+                position: fixed;
+                left: 50px;
+                bottom: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id = "move" width = "558" height = "40"></canvas>
+        <canvas id = "goc" width = "558" height = "80"></canvas>
+        <canvas id = "wish" width = "120" height = "80"></canvas>
+        <canvas id = "play" width = "558" height = "372">
+            <img class = "puzzle" id = "1" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/1.png?raw=true" />
+            <img class = "puzzle" id = "2" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/2.png?raw=true" />
+            <img class = "puzzle" id = "3" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/3.png?raw=true" />
+            <img class = "puzzle" id = "4" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/4.png?raw=true" />
+            <img class = "puzzle" id = "5" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/5.png?raw=true" />
+            <img class = "puzzle" id = "6" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/6.png?raw=true" />
+            <img class = "puzzle" id = "7" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/7.png?raw=true" />
+            <img class = "puzzle" id = "8" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/8.png?raw=true" />
+            <img class = "puzzle" id = "9" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/9.png?raw=true" />
+            <img class = "puzzle" id = "10" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/10.png?raw=true" />
+            <img class = "puzzle" id = "11" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/11.png?raw=true" />
+            <img class = "puzzle" id = "12" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/12.png?raw=true" />
+            <img class = "puzzle" id = "13" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/13.png?raw=true" />
+            <img class = "puzzle" id = "14" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/14.png?raw=true" />
+            <img class = "puzzle" id = "15" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/15.png?raw=true" />
+            <img class = "puzzle" id = "16" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/16.png?raw=true" />
+            <img class = "puzzle" id = "17" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/17.png?raw=true" />
+            <img class = "puzzle" id = "18" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/18.png?raw=true" />
+            <img class = "puzzle" id = "19" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/19.png?raw=true" />
+            <img class = "puzzle" id = "20" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/20.png?raw=true" />
+            <img class = "puzzle" id = "21" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/21.png?raw=true" />
+            <img class = "puzzle" id = "22" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/22.png?raw=true" />
+            <img class = "puzzle" id = "23" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/23.png?raw=true" />
+            <img class = "puzzle" id = "24" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/24.png?raw=true" />     
+        </canvas>
+        <canvas id = "origin" width = "558" height = "372">
+            <img id = "origin_image" src = "https://github.com/khuongkhaukhinh21/CBich2011/blob/master/2011.6x4.90px.png?raw=true" width = "558px" height = "372px"/> 
+        </canvas>
+
+
+
+        <script>
+            //Declare canvas
+            var canvas = document.getElementById("play");
+            var canvas_origin = document.getElementById("origin");
+            var canvas_move = document.getElementById("move");
+            var canvas_goc = document.getElementById("goc");
+            var origin = document.getElementById("origin_image");
+            var puzzle_image = 
+            [
+                document.getElementById("1"), document.getElementById("2"), document.getElementById("3"), document.getElementById("4"), document.getElementById("5"), document.getElementById("6"),
+                document.getElementById("7"), document.getElementById("8"), document.getElementById("9"), document.getElementById("10"), document.getElementById("11"), document.getElementById("12"),
+                document.getElementById("13"), document.getElementById("14"), document.getElementById("15"), document.getElementById("16"), document.getElementById("17"), document.getElementById("18"),
+                document.getElementById("19"), document.getElementById("20"), document.getElementById("21"), document.getElementById("22"), document.getElementById("23"), document.getElementById("24")
+            ]; //Changeable
+            var ctx = canvas.getContext("2d");
+            var ctx_move = canvas_move.getContext("2d"); 
+            var canvas_wish = document.getElementById("wish");
+            var ctx_wish = canvas_wish.getContext("2d");
+            
+
+            //Origin image of game
+            window.onload = function()
+            {
+                var ctx_origin = canvas_origin.getContext("2d");
+                ctx_origin.drawImage(origin, 0, 0, 558, 372);
+                var ctx_goc = canvas_goc.getContext("2d");
+                ctx_goc.beginPath();
+                ctx_goc.font = "50px serif";
+	            ctx_goc.fillStyle = "black";
+                ctx_goc.fillText("Origin Picture", 170, 50, 558);
+                ctx_goc.closePath();
+                //Wish
+                var wish = "These beautiful and sweet wishes are sent to the person who’ve helped me a lot. It’s you. Happy birthday!!!"
+                ctx_wish.beginPath();
+                ctx_wish.font = "40px Comic Sans MS";
+                ctx_wish.strokeStyle = "#22adad";
+                ctx_wish.fillStyle = "#191970"
+                ctx_wish.textAlign = "start";
+                ctx_wish.fillText(wish, 0, 40, window.screen.availWidth - 100);
+                ctx_wish.strokeText(wish, 0, 40, window.screen.availWidth - 100);
+                ctx_wish.closePath();
+            }
+            document.getElementById("wish").width = window.screen.availWidth - 100;
+            document.getElementById("wish").style.bottom = ((window.screen.availHeight - 120 - 372 - 80) / 2 - 55).toString() + "px";
+
+            console.log(document.getElementById("wish").style.bottom);
+            //Origin Location of Puzzle
+            var length = 93; //Changeable
+            var row = 4; //Changeable
+            var column = 6; //Changeable
+            var total = row * column;
+            puzzle_x = [];
+            puzzle_y = [];
+
+            for (var i = 0 ; i < column ; i++) puzzle_x.push(i * length);
+
+            for (var j = 0 ; j < row ; j++) puzzle_y.push(j * length);
+
+
+
+            //Class puzzle
+            class puzzle 
+            {
+                constructor(puzzle_location, puzzle_image)
+                {
+                    this.x = puzzle_location[0];
+                    this.y = puzzle_location[1];
+                    this.width = length;
+                    this.height = length;
+                    this.puzzle_image = puzzle_image; 
+                }
+                draw_puzzle()
+                {
+                    ctx.beginPath();
+                    ctx.drawImage(this.puzzle_image, this.x, this.y, this.width, this.height);
+                    ctx.closePath();
+                }
+
+                get_location()
+                {
+                    return [this.x, this.y];
+                }
+                get_image()
+                {
+                    return this.puzzle_image;
+                }
+            }
+
+
+
+            //Puzzle Have to Finish
+            var puzzle_location_right = [];
+            for (var i = 0 ; i < row ; i++)
+                for (var j = 0 ; j < column ; j++) 
+                    puzzle_location_right.push([puzzle_x[j], puzzle_y[i]]);
+                    
+            var puzzle_right = [];
+            for (var i = 0 ; i < total ; i++) puzzle_right.push(new puzzle(puzzle_location_right[i], puzzle_image[i]));
+
+
+
+            //All variable
+            var move = 0;
+            var box_null = 0; //Changeable
+            
+            var box = [] //Use for playing click mouse 
+            for (var i = 1 ; i <= row ; i++) box.push([]);
+            for (var i = 0 ; i < total ; i++) box[Math.floor(i/column)].push(i);
+
+            var right = [];
+            var yours = [];
+
+            var canvas_left = canvas.offsetLeft;
+            var canvas_top = canvas.offsetTop;
+
+            for (var i = 0 ; i < total ; i++) right.push(puzzle_right[i].puzzle_image);
+
+
+
+            //Puzzle Random
+            function turn_down(index_puzzle_image_random)
+            {
+                if (index_puzzle_image_random.indexOf(box_null) - column >= 0)
+                {
+                    index_null = index_puzzle_image_random.indexOf(box_null)
+                    index_puzzle_image_random[index_puzzle_image_random.indexOf(box_null)] = index_puzzle_image_random[index_null - column];
+                    index_puzzle_image_random[index_null - column] = box_null;
+                }
+            }
+
+            function turn_up(index_puzzle_image_random)
+            {
+                if (index_puzzle_image_random.indexOf(box_null) + column <= total - 1)
+                {
+                    index_null = index_puzzle_image_random.indexOf(box_null)
+                    index_puzzle_image_random[index_puzzle_image_random.indexOf(box_null)] = index_puzzle_image_random[index_null + column];
+                    index_puzzle_image_random[index_null + column] = box_null;
+                }
+            }
+
+            function turn_left(index_puzzle_image_random)
+            {
+                if ((index_puzzle_image_random.indexOf(box_null) + 1) % column != 0)
+                {
+                    index_null = index_puzzle_image_random.indexOf(box_null)
+                    index_puzzle_image_random[index_puzzle_image_random.indexOf(box_null)] = index_puzzle_image_random[index_puzzle_image_random.indexOf(box_null) + 1];
+                    index_puzzle_image_random[index_null + 1] = box_null;
+                }
+            }
+
+            function turn_right(index_puzzle_image_random)
+            {
+                if (index_puzzle_image_random.indexOf(box_null) % column != 0)
+                {
+                    index_null = index_puzzle_image_random.indexOf(box_null)
+                    index_puzzle_image_random[index_puzzle_image_random.indexOf(box_null)] = index_puzzle_image_random[index_puzzle_image_random.indexOf(box_null) - 1];
+                    index_puzzle_image_random[index_null - 1] = box_null;
+                }
+            }
+
+            var puzzle_image_random = []
+            //changeable
+            var index_puzzle_image_random = []
+
+            for (var i = 0 ; i < total ; i++) index_puzzle_image_random.push(i);
+
+            function random_image(times, index_puzzle_image_random)
+            {
+                for (var i = 1 ; i <= times ; i++)
+                {
+                    turn = Math.floor(Math.random() * 4);
+                    if (turn == 1)
+                    {
+                        turn_down(index_puzzle_image_random);
+                    }
+                    else if (turn == 2)
+                    {
+                        turn_up(index_puzzle_image_random);
+                    }
+                    else if (turn == 3)
+                    {
+                        turn_left(index_puzzle_image_random);
+                    }
+                    else
+                    {
+                        turn_right(index_puzzle_image_random);
+                    }
+                }
+            }
+
+            random_image(10000, index_puzzle_image_random)
+
+            while (index_puzzle_image_random.indexOf(box_null) - column >= 0) turn_down(index_puzzle_image_random);
+
+            while (index_puzzle_image_random.indexOf(box_null) % column != 0) turn_right(index_puzzle_image_random);
+
+            for (var i = 0 ; i < total ; i++) puzzle_image_random.push(puzzle_image[index_puzzle_image_random[i]]);
+
+            var puzzle_random = [];
+
+            for (var i = 0 ; i < total ; i++) puzzle_random.push(new puzzle(puzzle_location_right[i], puzzle_image_random[i])); 
+
+
+
+            //All function
+            //Function 1 random a number in [x, y]
+            function ngaunhien(x, y)
+            {
+                return Math.floor(Math.random() * (y - x + 1)) + x;
+            }
+
+
+
+            //Function 2 draw puzzle in the left
+            function draw_puzzle()
+            {
+            ctx.beginPath();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (var i = 0 ; i < total ; i++)
+            {
+                puzzle_random[i].draw_puzzle();
+                ctx.strokeRect(puzzle_random[i].x, puzzle_random[i].y, puzzle_random[i].width, puzzle_random[i].height);
+            }
+            ctx.closePath();
+            }
+
+
+
+            //Function 3 check if player win
+            function check_win()
+            {
+                for (var i = 0 ; i < total ; i++)
+                {
+                    if (puzzle_random[i].puzzle_image != right[i])
+                    {
+                        return 0;
+                    }
+                }
+                isGameOver = true;
+                setTimeout(function(){animation_win(); }, 400);
+            }
+
+
+
+            //Function 4 draw the move
+            function draw_move()
+            {
+                ctx_move.beginPath();
+                ctx_move.clearRect(0, 0, canvas_move.width, canvas_move.height);
+                var width_move;
+                if (move < 10)
+                {
+                    width_move = 120;
+                    start_move = 30;
+                }
+                else if (move < 100)
+                {
+                    width_move = 140;
+                    start_move = 20;
+                }
+                else if (move < 1000) 
+                {
+                    width_move = 160;
+                    start_move = 10;
+                }
+                else 
+                {
+                    width_move = 180;
+                    start_move = 0;
+                }
+                ctx_move.font = "40px serif";
+	            ctx_move.fillStyle = "black";
+                ctx_move.fillText("Move: " + move, start_move, 30, width_move);
+                ctx_move.closePath();
+            }
+
+
+
+            //Function 5 animation if winning
+            function animation_win()
+            {
+                alert("Congratulation!!!\nThe keyword for this puzzle is 'l'"); //Changeable
+            }
+
+            //Function 6 wishes
+            function wish()
+            {
+                return 0;
+            }
+
+            //Function input
+            function key_input()
+            {
+                document.addEventListener("keyup", function(event)
+                {
+                    if (event.keyCode == 40) //down
+                    {
+                        if (box_null - column >= 0)
+                        {
+                            move++;
+                            image_white = puzzle_random[box_null].get_image();
+                            box_null -= column;
+                            image_p = puzzle_random[box_null].get_image();
+                            puzzle_random[box_null].puzzle_image = image_white;
+                            puzzle_random[box_null + column].puzzle_image = image_p;
+                        }
+                    }
+                    else if (event.keyCode == 38) //up
+                    {
+                        if (box_null + column <= total - 1)
+                        {
+                            move++;
+                            image_white = puzzle_random[box_null].get_image();
+                            box_null += column;
+                            image_p = puzzle_random[box_null].get_image();
+                            puzzle_random[box_null].puzzle_image = image_white;
+                            puzzle_random[box_null - column].puzzle_image = image_p;
+                        }
+                    }
+                    else if (event.keyCode == 37) //left
+                    {
+                        if ((box_null + 1) % column != 0)
+                        {
+                            move++;
+                            image_white = puzzle_random[box_null].get_image();
+                            box_null += 1;
+                            image_p = puzzle_random[box_null].get_image();
+                            puzzle_random[box_null].puzzle_image = image_white;
+                            puzzle_random[box_null - 1].puzzle_image = image_p;
+                        }
+                    }
+                    else if (event.keyCode == 39) //right
+                    {  
+                        if (box_null % column != 0)
+                        {
+                            move++;
+                            image_white = puzzle_random[box_null].get_image();
+                            box_null -= 1;
+                            image_p = puzzle_random[box_null].get_image();
+                            puzzle_random[box_null].puzzle_image = image_white;
+                            puzzle_random[box_null + 1].puzzle_image = image_p;
+                        }
+                    }
+                })
+            }
+
+
+
+            function mouse_input()
+            {
+                canvas.addEventListener("click", function(event) 
+                {
+                    var m_x = event.pageX - canvas_left;
+                    var m_y = event.pageY - canvas_top;
+                    var box_target = box[Math.floor(m_y / length)][Math.floor(m_x / length)];
+                    if (box_target - box_null == column && box_null + column <= total - 1)
+                    {
+                        move++;
+                        image_white = puzzle_random[box_null].get_image();
+                        box_null += column;
+                        image_p = puzzle_random[box_null].get_image();
+                        puzzle_random[box_null].puzzle_image = image_white;
+                        puzzle_random[box_null - column].puzzle_image = image_p;
+                    }
+                    else if (box_null - box_target == column && box_null - column >= 0)
+                    {
+                        move++;
+                        image_white = puzzle_random[box_null].get_image();
+                        box_null -= column;
+                        image_p = puzzle_random[box_null].get_image();
+                        puzzle_random[box_null].puzzle_image = image_white;
+                        puzzle_random[box_null + column].puzzle_image = image_p;
+                    }
+                    else if (box_target - box_null == 1 && (box_null + 1) % column != 0)
+                    {
+                        move++;
+                        image_white = puzzle_random[box_null].get_image();
+                        box_null += 1;
+                        image_p = puzzle_random[box_null].get_image();
+                        puzzle_random[box_null].puzzle_image = image_white;
+                        puzzle_random[box_null - 1].puzzle_image = image_p;
+                    }
+                    else if (box_null - box_target == 1 && box_null % column != 0)
+                    {
+                        move++;
+                        image_white = puzzle_random[box_null].get_image();
+                        box_null -= 1;
+                        image_p = puzzle_random[box_null].get_image();
+                        puzzle_random[box_null].puzzle_image = image_white;
+                        puzzle_random[box_null + 1].puzzle_image = image_p;                    
+                    }
+                })
+
+            }
+
+
+
+            //Game Loop
+            var isGameOver = false;
+
+            function draw()
+            {
+                if (!isGameOver)
+                {
+                    check_win();
+                    draw_move();
+                    draw_puzzle();
+                    window.requestAnimationFrame(draw);
+                }
+            }
+
+            key_input();
+            
+            mouse_input();
+            
+            draw();            	
+        </script>
+    </body>
+</html>
