@@ -2,7 +2,7 @@ This website was made for my cousin's birthday in 2020. She could play on her Ma
 
 That website was hosted on Award Space. Link: http://ggame14.atwebpages.com/HPBD.html
 
-Below is the demo of this in case the website isn't working anymore
+Below is the demo of this in case the website isn't working anymore. I was playing it by the arrows on my keyboard.
 
 https://user-images.githubusercontent.com/121825910/211489824-dcece15d-7478-4062-9e71-b6d80f49f107.mp4
 
